@@ -1,0 +1,74 @@
+
+<div class="demo-button-container">
+  <table>
+ <th align="left"> <h3>Sipariş Listesi </h3> </th>
+<th align="right">  <button class="color" mat-raised-button (click)="duzenleClick()">Düzenle</button></th>
+</table>
+</div>
+<table class="color"  mat-table [dataSource]="SiparisList" border="1">
+
+  <ng-container matColumnDef="seciniz">
+    <th mat-header-cell *matHeaderCellDef>Seçiniz</th>
+    <td mat-cell *matCellDef="let row">
+      <mat-radio-group [(ngModel)]="selectedItem">
+        <mat-radio-button [value]="row"></mat-radio-button>
+      </mat-radio-group>
+    </td>
+  </ng-container>
+  <ng-container with="300" matColumnDef="musteriSiparisNo">
+    <th mat-header-cell *matHeaderCellDef> Müşteri Şipariş No </th>
+    <td mat-cell *matCellDef="let element"> {{element.musteriSiparisNo}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="cikisAdresi">
+    <th mat-header-cell *matHeaderCellDef> Çıkış Adresi </th>
+    <td mat-cell *matCellDef="let element"> {{element.cikisAdresi}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="varisAdresi">
+    <th mat-header-cell *matHeaderCellDef> Varış Adresi </th>
+    <td mat-cell *matCellDef="let element"> {{element.varisAdresi}} </td>
+  </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="miktar">
+      <th mat-header-cell *matHeaderCellDef> Miktar</th>
+      <td mat-cell *matCellDef="let element"> {{element.miktar}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="miktarBirim">
+      <th mat-header-cell *matHeaderCellDef> Miktar Birim</th>
+      <td mat-cell *matCellDef="let element"> {{ getirMiktarBirim(element.miktarBirim )}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="agirlik">
+      <th mat-header-cell *matHeaderCellDef> Ağırlık</th>
+      <td mat-cell *matCellDef="let element"> {{element.agirlik}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="agirlikBirim">
+      <th mat-header-cell *matHeaderCellDef> Ağırlık Birim</th>
+      <td mat-cell *matCellDef="let element"> {{ getirAgirlikBirim(element.agirlikBirim)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="malzemeKodu">
+      <th mat-header-cell *matHeaderCellDef> Malzeme Kodu</th>
+      <td mat-cell *matCellDef="let element"> {{element.malzemeKodu}} </td>
+    </ng-container>
+
+    <ng-container  matColumnDef="not">
+      <th  mat-header-cell *matHeaderCellDef> Not</th>
+      <td mat-cell *matCellDef="let element"> {{element.not}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="siparisDurum">
+      <th mat-header-cell *matHeaderCellDef> Sipariş Durum</th>
+      <td mat-cell *matCellDef="let element"> {{getirSiparisDurum(element.siparisDurum)}} </td>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+</tr>
+  </table>

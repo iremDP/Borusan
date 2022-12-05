@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Sipariş Düzenleme</h1>
+<div mat-dialog-content>
+  <table>
+    <tr>
+      <td>Müşteri Sipariş No : </td>
+      <td>{{data.musteriSiparisNo}}</td>
+    </tr>
+    <tr>
+      <td>
+    Statü :
+  </td>
+  <td>
+    <mat-form-field appearance="fill">
+    <mat-label>Statü</mat-label>
+    <select [(ngModel)]="selectedStatus">
+      <option value=1>Sipariş Alindı</option>
+      <option value=2>Yola Çıktı</option>
+      <option value=3>Dağıtım Merkezinde</option>
+      <option value=4>Dağıtıma Çıktı</option>
+      <option value=5>Teslim Edildi</option>
+      <option value=6>Teslim Edilemedi</option>
+    </select>
+  </mat-form-field>
+</td>
+</tr>
+</table>
+</div>
+<div mat-dialog-actions>
+<button mat-button mat-dialog-close>Vazgeç</button> 
+  <button mat-button (click)="guncelleClick()">Kaydet</button> 
+
+</div>
+
+
